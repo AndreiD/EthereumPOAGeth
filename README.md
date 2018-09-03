@@ -1,6 +1,6 @@
 # Ethereum POA Geth
 
-### Step 1: Initial Setup :alien:
+### Initial Setup :mushroom:
 
 download and build geth
 
@@ -29,7 +29,9 @@ or, create 2 small AWS instances, 15GB of space should do it
 generate a genesis with puppeth... or use this one
 Modify the clique period (that is how fast the blocks are mined).
 
-### Step 2 :mushroom:
+### Bless the folder with the genesis :mushroom:
+
+What do they call pastors in Germany? A: German Shepherds.
 
 ~~~~
 geth --datadir node1/ init genesis.json
@@ -71,13 +73,6 @@ pm2 start geth --name node2 -- --datadir node2/ --syncmode 'full' --port 30342 -
 pm2 logs node1
 ~~~~
 
-
-replace the enode address with yours, and the account with yours, the bootnode with yours
-
-~~~~
-geth --datadir node2/ --syncmode 'full' --port 30342 --rpc --rpcaddr 'localhost' --rpcport 8542 --rpcapi 'personal,db,eth,net,web3,txpool,miner' --bootnodes 'enode://61c3869413da609fa9d83c8a8a7771bac29ca673fdea5331933ecb6d90d3d59e8065557a9b08bbc4ddd11196984ee963c7abe568e329c1a0a81789d872173fe0@127.0.0.1:30303' --networkid 1337 --gasprice '1' -unlock '0x2046015c03ec183cc10ee2ea345b9b4faad9cb7a' --password node2/password.txt  --ipcdisable --mine
-~~~~
-
 ### 5. Almost Finish :mushroom:
 ~~~~
 $ geth attach 'http://localhost:8501'
@@ -97,6 +92,8 @@ at block: 37 (Sun, 26 Aug 2018 17:32:09 EEST)
 
 Add a Chain Explorer
 Check https://github.com/etherparty/explorer …there are others too
+
+When is medicine first mentioned in the Bible? A: When God gave Moses two tablets.'
 
 ### Happy hacking. Problems ? Write in issues
 
