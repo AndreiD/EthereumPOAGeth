@@ -1,7 +1,6 @@
-# Setup a Proof of Authority Blockchain using Geth :alien:
-(for parity docker version checkout ->https://github.com/AndreiD/Proof-Of-Authority-Blockchain)
+# Ethereum POA Geth
 
-### Initial Setup
+### Step 1: Initial Setup :alien:
 
 download and build geth
 
@@ -28,16 +27,16 @@ create a password.txt file under each node containing the password for that acco
 or, create 2 small AWS instances, 15GB of space should do it
 
 generate a genesis with puppeth... or use this one
+Modify the clique period (that is how fast the blocks are mined).
 
-###  Modify the clique period (that is how fast the blocks are mined).
-### Add new addresses if you want…
+### Step 2 :mushroom:
 
 ~~~~
 geth --datadir node1/ init genesis.json
 geth --datadir node2/ init genesis.json
 ~~~~
 
-### 3. Bootnode
+### 3. Bootnode :mushroom:
 
 the node that helps other nodes discover each-other. Put it on a static ip.
 
@@ -52,7 +51,7 @@ bootnode -nodekey boot.key -verbosity 9 -addr :30303
 ~~~~
 
 can be an AWS micro instance
-### 4. Going Live
+### 4. Going Live :mushroom:
 
 check the file restart_blockchain.sh and replace the stuff with yours
 ex: replace the enode address with yours, and the account with yours
@@ -79,7 +78,7 @@ replace the enode address with yours, and the account with yours, the bootnode w
 geth --datadir node2/ --syncmode 'full' --port 30342 --rpc --rpcaddr 'localhost' --rpcport 8542 --rpcapi 'personal,db,eth,net,web3,txpool,miner' --bootnodes 'enode://61c3869413da609fa9d83c8a8a7771bac29ca673fdea5331933ecb6d90d3d59e8065557a9b08bbc4ddd11196984ee963c7abe568e329c1a0a81789d872173fe0@127.0.0.1:30303' --networkid 1337 --gasprice '1' -unlock '0x2046015c03ec183cc10ee2ea345b9b4faad9cb7a' --password node2/password.txt  --ipcdisable --mine
 ~~~~
 
-### 5. Finish
+### 5. Almost Finish :mushroom:
 ~~~~
 $ geth attach 'http://localhost:8501'
 ~~~~
@@ -94,7 +93,7 @@ at block: 37 (Sun, 26 Aug 2018 17:32:09 EEST)
  modules: eth:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 txpool:1.0 web3:1.0
 ~~~~
 
-### Final touches:
+### Real Finish :mushroom:
 
 Add a Chain Explorer
 Check https://github.com/etherparty/explorer …there are others too
