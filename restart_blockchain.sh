@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # edit the --name and after -- you put the arguments
 pm2 stop all
 pm2 delete all
